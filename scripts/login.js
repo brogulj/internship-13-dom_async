@@ -6,7 +6,7 @@ function registrationFormSubmit(form) {
         .value;
     if (password === repeatPassword) {
         localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
+        localStorage.setItem("password", hash(password));
         if (window.confirm("Do you want to be redirected to the main site")) {
             location.href = "jokes.html";
         } else {
@@ -28,7 +28,7 @@ function loginFormSubmit(form) {
 
     if (
         username === localStorage.getItem("username") &&
-        password === localStorage.getItem("password")
+        hash(password) === localStorage.getItem("password")
     ) {
         location.href = "jokes.html";
     } else {
