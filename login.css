@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 10px;
+}
+
+body {
+    background-color: rgb(48, 206, 193);
+}
+
+.login {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    border: 5px solid rgb(63, 68, 70);
+    border-radius: 5%;
+    background-color: rgb(63, 68, 70);
+    color: rgb(48, 206, 193);
+}
+
+.registration {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 5%;
+    max-width: 300px;
+    align-self: center;
+}
+
+.form input{
+    color: rgb(63, 68, 70);
+    background-color: rgb(48, 206, 193);
+    border: 1px solid rgb(48, 206, 193) ;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.form input:active{
+}
