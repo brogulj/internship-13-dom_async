@@ -7,3 +7,7 @@ function show(element) {
     element.classList.add("show");
     element.classList.remove("hide");
 }
+
+function getJokesFromStorage() {
+    return JSON.parse(localStorage.getItem("jokes"));
+}

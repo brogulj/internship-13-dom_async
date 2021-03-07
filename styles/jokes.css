@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(48, 206, 193);
+}
+
+button {
+    height: 30px;
+    width: 150px;
+    font-size: 20px;
+    background-color: rgb(48, 206, 193);
+    color: rgb(63, 68, 70);
+    border: rgb(48, 206, 193) solid 1px;
+    border-radius: 10px;
+    margin: 20px
+}
+
+.get__joke {
+    align-self: center;
+}
+
+h2 {
+    font-size: 50px;
+}
+
+p {
+    font-size: 19px;
+}
+
+.joke__prompt {
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    margin: 5%;
+    border:rgb(63, 68, 70) solid 1px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: rgb(63, 68, 70);
+    width: 90%;
+    color: rgb(48, 206, 193);
+}
+
+.joke__review {
+    flex-direction: column;
+    box-sizing: border-box;
+    border: rgb(63, 68, 70) solid 8px;
+    border-radius: 20px;
+    width: 90%;
+    padding: 15px;
+    align-items: center;
+}
+
+.joke__review button{
+    background-color: rgb(63, 68, 70);
+    color: rgb(48, 206, 193);
+    border: rgb(63, 68, 70) solid 1px;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+.get__joke, .review__button {
+    border: rgb(63, 68, 70) solid 4px;
+    height: auto;
+    align-content: center;
+}
+
+.grade__joke {
+    flex-direction: column;
+    align-items: center;
+}
+.grade__joke-buttons {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+.grade__joke button {
+    margin: 5px;
+}
+
+.confirm__modal { 
+    min-width: 335px;
+    box-sizing: border-box;
+    width: 50%;
+    height: 20%;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25%;
+    margin-top: -10%;
+    background-color: rgb(63, 68, 70);
+    color: rgb(48, 206, 193);
+    padding: 20px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.confirm__modal h2 {
+    font-size: 30px;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.774);
+}
+
+.joke__review p{
+    text-align: center;
+}

@@ -10,7 +10,11 @@ async function getJoke() {
         .then((data) => {
             document.querySelector("p.joke__text").innerHTML = data.joke;
             document.querySelector("p.joke__id").innerHTML = data.id;
-        })
+            localStorage.setItem(
+                "currentJoke",
+                JSON.stringify({ id: data.id, joke: data.joke })
+            );
+        });
     let result = await joke;
     return result;
 }

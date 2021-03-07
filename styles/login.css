@@ -8,9 +8,12 @@ body {
 }
 
 .login {
+    height: 450px;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
     border: 5px solid rgb(63, 68, 70);
     border-radius: 5%;
     background-color: rgb(63, 68, 70);
@@ -21,6 +24,10 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    border: 5px solid rgb(63, 68, 70);
+    border-radius: 5%;
+    background-color: rgb(63, 68, 70);
+    color: rgb(48, 206, 193);
 }
 
 .show {
@@ -35,7 +42,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 5%;
+    margin-top: 15px;
     max-width: 300px;
     align-self: center;
 }
@@ -46,7 +53,4 @@ body {
     border: 1px solid rgb(48, 206, 193) ;
     border-radius: 10px;
     margin-bottom: 50px;
-}
-
-.form input:active{
 }

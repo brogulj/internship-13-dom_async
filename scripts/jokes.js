@@ -8,12 +8,14 @@ const jokeReview = document.querySelector("div.joke__review");
 const reviewText = document.querySelector("p.review__text");
 const reviewInfo = document.querySelector("p.review__info");
 const confirmModal = document.querySelector("div.confirm__modal");
+const overlay = document.querySelector("div.overlay");
 let confirmDeletion = false;
 let reviewIndex = 0;
 let jokes = localStorage.getItem("jokes");
 let currentJoke;
 let reviewJoke;
 getJoke();
+overlay.style.display = "none";
 
 function getJokeClickHandler() {
     hide(getJokeButton);
@@ -22,8 +24,8 @@ function getJokeClickHandler() {
 }
 
 function saveClickHandler() {
-    currentJoke = { id: jokeId.innerHTML, joke: jokeText.innerHTML };
-    show(document.querySelector("div.grade__joke"));
+    currentJoke = JSON.parse(localStorage.getItem("currentJoke"));
+    show(gradeJoke);
 }
 
 function gradeClickHandler(event) {
@@ -35,7 +37,7 @@ function gradeClickHandler(event) {
         localStorage.setItem("jokes", jokes);
         displayReviewJoke(0);
     } else {
-        let jokes = JSON.parse(localStorage.getItem("jokes"));
+        let jokes = getJokesFromStorage();
         jokes.push({
             id: currentJoke.id,
             joke: currentJoke.joke,
@@ -44,8 +46,9 @@ function gradeClickHandler(event) {
         jokes = JSON.stringify(jokes);
         localStorage.setItem("jokes", jokes);
     }
+    
     getJoke();
-    hide(document.querySelector("div.grade__joke"));
+    hide(gradeJoke);
 }
 
 function reviewClickHandler() {
@@ -58,21 +61,24 @@ function reviewClickHandler() {
 function previousClickHandler() {
     reviewIndex -= 1;
     if (reviewIndex < 0) {
-        reviewIndex = JSON.parse(localStorage.getItem("jokes")).length - 1;
+        reviewIndex = getJokesFromStorage().length - 1;
     }
+
     displayReviewJoke(reviewIndex);
 }
 
 function nextClickHandler() {
     reviewIndex += 1;
-    if (reviewIndex >= JSON.parse(localStorage.getItem("jokes")).length) {
+    if (reviewIndex >= getJokesFromStorage().length) {
         reviewIndex = 0;
     }
+
     displayReviewJoke(reviewIndex);
 }
 
 function deleteClickHandler() {
     show(confirmModal);
+    overlay.style.display = "block";
 }
 
 function stopReviewClickHandler() {
@@ -81,9 +87,10 @@ function stopReviewClickHandler() {
 }
 
 function displayReviewJoke(index) {
-    let jokes = JSON.parse(localStorage.getItem("jokes")).sort((a, b) =>
+    let jokes = getJokesFromStorage().sort((a, b) =>
         a.grade > b.grade ? -1 : b.grade > a.grade ? 1 : 0
     );
+
     if (jokes[0] == null) {
         reviewIndex = 0;
         reviewText.innerHTML = "There are no saved jokes";
@@ -96,13 +103,17 @@ function displayReviewJoke(index) {
 }
 
 function confirmDeletionClickHandler(event) {
-    if (event.target.textContent === "Yes") {
-        let jokes = JSON.parse(localStorage.getItem("jokes"));
+    console.log(event)
+    if (event.target.id == "Yes") {
+        let jokes = getJokesFromStorage();
         if (jokes.length > 0) {
             jokes.splice(reviewIndex, 1);
             localStorage.setItem("jokes", JSON.stringify(jokes));
             nextClickHandler();
         }
     }
+
     hide(confirmModal);
+
+    overlay.style.display = "none";
 }
